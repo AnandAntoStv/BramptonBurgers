@@ -1,13 +1,18 @@
 public class HealthyBurger extends Burger {
-    String filling = "Bacon";
-    HealthyBurger(String name, Double price, int maxToppings, String filling)
-    {
-        super(name,price,maxToppings);
-        this.filling=filling;
-    }
-    @Override
-    public String toString() {
-        return name+" with "+filling+" \n   Cost:"+ "$ " +this.getCost()+"\n   Max Toppings:"+maxToppings;
+    private String rollType;
+
+    HealthyBurger(){
+        super("Healthy Burger",5.67,6);
+        this.rollType = "Brown Rye";
     }
 
+    public String getRollType() {
+        return rollType;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s with %s :- \nCost:  $%.2f \nMax Toppings: %d\n",
+                this.getName(),this.getRollType(),this.getPrice(),this.getMaxToppings());
+    }
 }

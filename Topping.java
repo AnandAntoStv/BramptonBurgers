@@ -1,14 +1,11 @@
 public class Topping {
-    private String name;
-    private Double price;
 
-    public Topping(String name, Double price) {
+    String name;
+    Double price;
+
+    Topping(String name, Double price){
         this.name = name;
         this.price = price;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Double getPrice() {
@@ -17,6 +14,6 @@ public class Topping {
 
     @Override
     public String toString() {
-        return name + " : " + "$ "+ this.getPrice();
+        return String.format("%s : $%.2f\n", this.name, this.price);
     }
 }

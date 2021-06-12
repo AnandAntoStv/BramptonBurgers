@@ -1,25 +1,35 @@
 import java.util.ArrayList;
 
 public class Burger {
-    String name;
-    Double cost;
-    int maxToppings;
-    ArrayList<Topping> toppings = new ArrayList<>();
+    private Double price;
+    private String name;
+    private int maxToppings;
+    private ArrayList<Topping> toppings = new ArrayList<>();
 
-    public Burger(String name, double cost, int maxToppings) {
+    Burger (String name, Double price, int maxToppings){
         this.name = name;
-        this.cost = cost;
+        this.price = price;
         this.maxToppings = maxToppings;
     }
-    public boolean addTopping(Topping topping){
-        if(toppings.size() == this.maxToppings)
-            return false;
-        toppings.add(topping);
-        return true;
+
+
+    public Double getPrice() {
+        return price;
     }
 
-    public Double getCost() {
-        return cost;
+    public String getName() {
+        return name;
     }
 
+    public int getMaxToppings() {
+        return maxToppings;
+    }
+
+    public void setToppings(Topping topping){
+        this.toppings.add(topping);
+    }
+
+    public ArrayList<Topping> getToppings(){
+        return this.toppings;
+    }
 }

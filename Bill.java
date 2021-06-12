@@ -1,27 +1,31 @@
 public class Bill {
+
     Burger burger;
-    Bill(Burger burger){
-        this.burger=burger;
+
+    public Bill(Burger burger){
+        this.burger = burger;
     }
 
-    @Override
-    public String toString() {
-        String toppings = "";
-        Double cost = burger.getCost();
-        for(int i=0;i<burger.toppings.size();i++){
-            toppings+=(i+1)+". "+burger.toppings.get(i)+"\n";
-            cost+=burger.toppings.get(i).getPrice();
-        }
-        return   "\n\n\tReceipt\n"
-                +"\t```````\n"
-                +"1."+burger.name+" - "+burger.getCost()+"\n\n"
-                +"Extras:\n"
-                +"```````\n"
-                + toppings
-                +"\n\n"
-                +"----------------------------------------\n"
-                +"Amount: "+String.format("%.2f",cost)+"$ + (Tax:" +String.format("%.2f",cost*.15)+"$)\n"
-                +"----------------------------------------\n"
-                +"Total: "+String.format("%.2f",cost*1.15)+"$";
+    public void generateReciept(){
+        double total = calculateTotal(this.burger);
+        double tax = total * 0.15;
+        double netTotal= total + tax;
+
+        System.out.println("Total : "+ netTotal);
     }
+
+
+    private double calculateTotal(Burger burger){
+        double tempTotal = 0;
+
+        tempTotal += burger.getPrice();
+
+        for (Topping topping: burger.getToppings()) {
+            tempTotal += topping.getPrice();
+        }
+
+        return tempTotal;
+    }
+
+
 }
